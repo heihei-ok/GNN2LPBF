@@ -2,6 +2,7 @@ import os
 import pickle
 from sklearn.model_selection import train_test_split
 
+# Data loading: Load the processed data onto the local device and release the resources.
 
 class time_data_loda(object):
     def __init__(self, data_dir):
@@ -28,7 +29,3 @@ class time_data_loda(object):
             return test_dataset
         else:
             return train_dataset, val_dataset
-
-
-if __name__ == "__main__":
-    x = time_data_loda().data_pre()

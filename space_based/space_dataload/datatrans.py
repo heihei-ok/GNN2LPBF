@@ -5,10 +5,11 @@ from scipy.io import loadmat
 from utils.generator import data_cut
 from tqdm import tqdm
 import time
-
+# Reconstructing the code for data loading and data splitting
+# based on your data storage format
 class space_data_trans(object):
     def __init__(self, datapath, path_size, num_connect, task):
-        self.class_name = ['E1', 'E2', 'E3', 'E4', 'E5']
+        self.class_name = ['You', 'class', 'Name']
         self.datapath = datapath
         self.num_line = 126
         self.path_size = path_size
@@ -16,14 +17,10 @@ class space_data_trans(object):
         self.task = task
 
     def data_path(self):
-        """
-        获取每类零件下每层文件数据的路径，每层数据文件按层数命名，无需再次排序
-        :return:
-        """
         pathlab = []
         sets = os.listdir(self.datapath)
         for se in sets:
-            path0 = os.path.join(self.datapath, se) + '\ch2'
+            path0 = os.path.join(self.datapath, se)
             path = os.listdir(path0)
             for inx in range(len(path)):
                 path[inx] = os.path.join(path0, path[inx])
@@ -72,8 +69,3 @@ class space_data_trans(object):
             with open(os.path.join(data_air, 'data_' + str(clc_path) + ".pkl"), 'wb') as fo:
                 pickle.dump(x, fo)
         print("Cost time:", time.time()-star)
-
-
-if __name__ == "__main__":
-    a = space_data_trans("F:\data\sec_data")
-    a.data_down('F:\paper\graph\mygraph_exit\data')

@@ -14,7 +14,7 @@ def parse_args():
     parser.add_argument('--model_name', type=str, default='GCN',
                         choices=['GCN', 'HoGCN', 'ChebyNet', 'SGCN', 'GAT', 'GIN', 'GraphSage'],
                         help='the name of the model')
-    parser.add_argument('--data_dir', type=str, default="F:\data\sec_data",
+    parser.add_argument('--data_dir', type=str, default="D:\data",
                         help='the directory of the source data_space')
     parser.add_argument('--dataset_dir', type=str, default="time_based/data_time",
                         help='the directory of the process dataset')

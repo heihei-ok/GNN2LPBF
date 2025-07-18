@@ -6,24 +6,23 @@ from tqdm import tqdm
 from utils.generator import Gen_graph
 import time
 
+# Reconstructing the code for data loading and data splitting
+# based on your data storage format
 class time_data_trans(object):
     def __init__(self, datapath, graph_type, path_size, garaph_task):
         self.graph_type = graph_type
-        self.class_name = ['E1', 'E2', 'E3', 'E4', 'E5']
+        self.class_name = ['You', 'class', 'Name']
         self.datapath = datapath
         self.num_line = 126
         self.path_size = path_size
         self.task = garaph_task
 
     def data_path(self):
-        """
-        获取每类零件下每层文件数据的路径，每层数据文件按层数命名，无需再次排序
-        :return:
-        """
+
         pathlab = []
         sets = os.listdir(self.datapath)
         for se in sets:
-            path0 = os.path.join(self.datapath, se) + '\ch1'
+            path0 = os.path.join(self.datapath, se)
             path = os.listdir(path0)
             for inx in range(len(path)):
                 path[inx] = os.path.join(path0, path[inx])
@@ -65,7 +64,3 @@ class time_data_trans(object):
                 pickle.dump(graphset, fo)
         print("Cost time:", time.time()-star)
 
-
-if __name__ == "__main__":
-    a = time_data_trans("F:\data\sec_data")
-    a.data_down('F:\paper\graph\mygraph_exit\data_time')

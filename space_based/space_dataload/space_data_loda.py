@@ -2,7 +2,7 @@ import os
 import pickle
 from sklearn.model_selection import train_test_split
 
-
+# Data loading: Load the processed data onto the local device and release the resources.
 class space_data_loda(object):
     def __init__(self, data_dir):
         self.dir = data_dir
